@@ -1,0 +1,89 @@
+{
+	"AUTOGEN_COMMAND_LINE_LENGTH_MAX" : 32000,
+	"BUILD_DIR" : "D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/my_libs/DBManager/DBManagerLib_autogen",
+	"CMAKE_BINARY_DIR" : "D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/my_libs/DBManager",
+	"CMAKE_CURRENT_SOURCE_DIR" : "D:/repo/AnimalsGame/AnimalsGame/my_libs/DBManager",
+	"CMAKE_EXECUTABLE" : "D:/libs/Qt/Tools/CMake_64/bin/cmake.exe",
+	"CMAKE_LIST_FILES" : [ "D:/repo/AnimalsGame/AnimalsGame/my_libs/DBManager/CMakeLists.txt" ],
+	"CMAKE_SOURCE_DIR" : "D:/repo/AnimalsGame/AnimalsGame",
+	"CROSS_CONFIG" : false,
+	"DEP_FILE" : "D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/my_libs/DBManager/DBManagerLib_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "DBManagerLib_autogen/timestamp",
+	"HEADERS" : 
+	[
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/my_libs/DBManager/DBManager.hpp",
+			"MU",
+			"EWIEGA46WW/moc_DBManager.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/my_libs/DBManager/DBManagerLib_autogen/include",
+	"MOC_COMPILATION_FILE" : "D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/my_libs/DBManager/DBManagerLib_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/my_libs/DBManager/libpqxx_build/include",
+		"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/include",
+		"D:/libs/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++",
+		"D:/libs/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32",
+		"D:/libs/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward",
+		"D:/libs/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include",
+		"D:/libs/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed",
+		"D:/libs/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT",
+		"Q_GADGET_EXPORT",
+		"Q_ENUM_NS"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"D:/libs/Qt/Tools/mingw1120_64/bin/g++.exe",
+		"-std=gnu++20",
+		"-dM",
+		"-E",
+		"-c",
+		"D:/libs/Qt/Tools/CMake_64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/my_libs/DBManager/DBManagerLib_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 8,
+	"PARSE_CACHE_FILE" : "D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/my_libs/DBManager/CMakeFiles/DBManagerLib_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "D:/libs/Qt/6.7.2/mingw_64/./bin/moc.exe",
+	"QT_UIC_EXECUTABLE" : "D:/libs/Qt/6.7.2/mingw_64/./bin/uic.exe",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 7,
+	"SETTINGS_FILE" : "D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/my_libs/DBManager/CMakeFiles/DBManagerLib_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/my_libs/DBManager/DBManager.cpp",
+			"MU",
+			null
+		]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"USE_BETTER_GRAPH" : false,
+	"VERBOSITY" : 0
+}

@@ -1,0 +1,217 @@
+{
+	"AUTOGEN_COMMAND_LINE_LENGTH_MAX" : 32000,
+	"BUILD_DIR" : "D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/my_libs/DBManager/libpqxx_build/src/pqxx_autogen",
+	"CMAKE_BINARY_DIR" : "D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/my_libs/DBManager/libpqxx_build/src",
+	"CMAKE_CURRENT_SOURCE_DIR" : "D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src",
+	"CMAKE_EXECUTABLE" : "D:/libs/Qt/Tools/CMake_64/bin/cmake.exe",
+	"CMAKE_LIST_FILES" : 
+	[
+		"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/CMakeLists.txt",
+		"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/libpqxx.pc.in"
+	],
+	"CMAKE_SOURCE_DIR" : "D:/repo/AnimalsGame/AnimalsGame",
+	"CROSS_CONFIG" : false,
+	"DEP_FILE" : "D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/my_libs/DBManager/libpqxx_build/src/pqxx_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "pqxx_autogen/timestamp",
+	"HEADERS" : [],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/my_libs/DBManager/libpqxx_build/src/pqxx_autogen/include",
+	"MOC_COMPILATION_FILE" : "D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/my_libs/DBManager/libpqxx_build/src/pqxx_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/my_libs/DBManager/libpqxx_build/include",
+		"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/include",
+		"C:/Program Files/PostgreSQL/16/include",
+		"C:/Program Files/PostgreSQL/16/include/server",
+		"D:/libs/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++",
+		"D:/libs/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32",
+		"D:/libs/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward",
+		"D:/libs/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include",
+		"D:/libs/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed",
+		"D:/libs/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT",
+		"Q_GADGET_EXPORT",
+		"Q_ENUM_NS"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"D:/libs/Qt/Tools/mingw1120_64/bin/g++.exe",
+		"-std=c++20",
+		"-dM",
+		"-E",
+		"-c",
+		"D:/libs/Qt/Tools/CMake_64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/my_libs/DBManager/libpqxx_build/src/pqxx_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 8,
+	"PARSE_CACHE_FILE" : "D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/my_libs/DBManager/libpqxx_build/src/CMakeFiles/pqxx_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "D:/libs/Qt/6.7.2/mingw_64/./bin/moc.exe",
+	"QT_UIC_EXECUTABLE" : "D:/libs/Qt/6.7.2/mingw_64/./bin/uic.exe",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 7,
+	"SETTINGS_FILE" : "D:/repo/AnimalsGame/AnimalsGame/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/my_libs/DBManager/libpqxx_build/src/CMakeFiles/pqxx_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/array.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/binarystring.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/blob.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/connection.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/cursor.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/encodings.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/errorhandler.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/except.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/field.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/largeobject.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/notification.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/params.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/pipeline.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/result.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/robusttransaction.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/row.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/sql_cursor.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/strconv.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/stream_from.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/stream_to.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/subtransaction.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/time.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/transaction.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/transaction_base.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/util.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/version.cxx",
+			"MU",
+			null
+		],
+		[
+			"D:/repo/AnimalsGame/AnimalsGame/third_party_libs/libpqxx/src/wait.cxx",
+			"MU",
+			null
+		]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"USE_BETTER_GRAPH" : false,
+	"VERBOSITY" : 0
+}
