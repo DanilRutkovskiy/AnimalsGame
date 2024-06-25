@@ -3,6 +3,7 @@
 
 #include <string>
 #include <memory>
+#include <sstream>
 enum class NodeType{
     Answer,
     Question,
@@ -19,6 +20,9 @@ public:
     std::shared_ptr<AnimalsTreeNode> leftChild();
     std::shared_ptr<AnimalsTreeNode> rightChild();
 
+    std::string data();
+    NodeType type();
+
 private:
     std::string m_data;
     NodeType m_type;
@@ -32,6 +36,13 @@ class AnimalsTree
 public:
     AnimalsTree();
     void setHead(std::shared_ptr<AnimalsTreeNode>& head);
+
+    std::string serialize();
+    void deserialize(const std::string& data);
+
+private:
+    std::string recSerialize(const std::shared_ptr<AnimalsTreeNode>& treeNode);
+    std::shared_ptr<AnimalsTreeNode> recDeserialize(std::istringstream& ss);
 
 private:
     std::shared_ptr<AnimalsTreeNode> m_head;

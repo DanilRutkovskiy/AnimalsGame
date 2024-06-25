@@ -6,10 +6,9 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , m_game{std::make_unique<TheGame>()}
 {
     ui->setupUi(this);
-
-    AnimalsTreeNode node(NodeType::Question, "123");
 
     init();
 }

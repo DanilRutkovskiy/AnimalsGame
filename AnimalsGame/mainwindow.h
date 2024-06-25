@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <memory>
+
+#include "thegame.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -26,5 +30,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    std::unique_ptr<TheGame> m_game;
 };
 #endif // MAINWINDOW_H

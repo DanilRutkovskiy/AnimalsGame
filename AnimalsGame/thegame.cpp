@@ -21,4 +21,9 @@ void TheGame::init()
     waterQ->addRightChild(NodeType::Answer, "Змея");
 
     m_dataTree->setHead(head);
+
+    auto check = m_dataTree->serialize();
+
+    AnimalsTree test;
+    test.deserialize(check);
 }

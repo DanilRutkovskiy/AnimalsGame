@@ -1,5 +1,6 @@
 #include "animalstree.h"
 
+#include <iostream>
 
 
 AnimalsTreeNode::~AnimalsTreeNode()
@@ -33,7 +34,7 @@ void AnimalsTreeNode::setLeftChild(std::shared_ptr<AnimalsTreeNode> &left)
 
 void AnimalsTreeNode::setRightChild(std::shared_ptr<AnimalsTreeNode> &right)
 {
-    m_leftChild = right;
+    m_rightChild = right;
 }
 
 std::shared_ptr<AnimalsTreeNode> AnimalsTreeNode::leftChild()
@@ -46,6 +47,16 @@ std::shared_ptr<AnimalsTreeNode> AnimalsTreeNode::rightChild()
     return m_rightChild;
 }
 
+std::string AnimalsTreeNode::data()
+{
+    return m_data;
+}
+
+NodeType AnimalsTreeNode::type()
+{
+    return m_type;
+}
+
 AnimalsTree::AnimalsTree(): m_head{nullptr}
 {
 
@@ -54,4 +65,67 @@ AnimalsTree::AnimalsTree(): m_head{nullptr}
 void AnimalsTree::setHead(std::shared_ptr<AnimalsTreeNode>& head)
 {
     m_head = head;
+}
+
+std::string AnimalsTree::serialize()
+{
+    return recSerialize(m_head);
+}
+
+void AnimalsTree::deserialize(const std::string &data)
+{
+    std::istringstream iss{data};
+    m_head = recDeserialize(iss);
+}
+
+std::string AnimalsTree::recSerialize(const std::shared_ptr<AnimalsTreeNode> &node)
+{
+    if(node == nullptr){
+        return "null null ";
+    }
+
+    std::stringstream ss;
+    std::string temp = node->data();
+    for(auto& ch : temp){
+        if(ch == ' '){
+            ch = '_';
+        }
+    }
+    ss << temp << " ";
+    ss << std::to_string(static_cast<int>(node->type())) << " ";
+    ss << recSerialize(node->leftChild());
+    ss << recSerialize(node->rightChild());
+
+    return ss.str();
+}
+
+std::shared_ptr<AnimalsTreeNode> AnimalsTree::recDeserialize(std::istringstream& iss)
+{
+    std::string val;
+    std::string type;
+
+    std::shared_ptr<AnimalsTreeNode> left;
+    std::shared_ptr<AnimalsTreeNode> right;
+
+    iss >> val;
+    for(auto& ch : val){
+        if(ch == '_'){
+            ch = ' ';
+        }
+    }
+    iss >> type;
+    if(val == "null" && type == "null"){
+        return nullptr;
+    }
+
+    if(iss){
+        left = recDeserialize(iss);
+        right = recDeserialize(iss);
+        auto ret = std::make_shared<AnimalsTreeNode>(static_cast<NodeType>(std::stoi(type)), val);
+        ret->setRightChild(right);
+        ret->setLeftChild(left);
+        return ret;
+    }
+
+    return nullptr;
 }
