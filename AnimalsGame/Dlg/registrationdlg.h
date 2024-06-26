@@ -7,10 +7,12 @@
 #include <tuple>
 
 typedef std::vector<std::tuple<int, std::string, std::string>> users_t;
+namespace RegistrationDlgNs{
 enum class DlgMode{
     LogIn = 0,
     Registration = 1,
 };
+}
 
 namespace Ui {
 class RegistrationDlg;
@@ -25,7 +27,7 @@ public:
     ~RegistrationDlg();
 
 public:
-    void changeMode(DlgMode mode);
+    void changeMode(RegistrationDlgNs::DlgMode mode);
 
 private slots:
     void onAcceptBtnClicked();
@@ -40,7 +42,7 @@ private:
 
 private:
     users_t m_users;
-    DlgMode m_mode;
+    RegistrationDlgNs::DlgMode m_mode;
 
 private:
     Ui::RegistrationDlg *ui;

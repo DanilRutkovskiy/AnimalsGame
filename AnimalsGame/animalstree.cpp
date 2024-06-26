@@ -1,8 +1,5 @@
 #include "animalstree.h"
 
-#include <iostream>
-
-
 AnimalsTreeNode::~AnimalsTreeNode()
 {
 }
@@ -57,7 +54,7 @@ NodeType AnimalsTreeNode::type()
     return m_type;
 }
 
-AnimalsTree::AnimalsTree(): m_head{nullptr}
+AnimalsTree::AnimalsTree(): m_head{nullptr}, m_current(nullptr)
 {
 
 }
@@ -76,6 +73,27 @@ void AnimalsTree::deserialize(const std::string &data)
 {
     std::istringstream iss{data};
     m_head = recDeserialize(iss);
+    m_current = m_head;
+}
+
+std::shared_ptr<AnimalsTreeNode> AnimalsTree::getCurrentNode()
+{
+    return m_current;
+}
+
+void AnimalsTree::goLeft()
+{
+    if(m_current != nullptr){
+        m_current = m_current->leftChild();
+    }
+
+}
+
+void AnimalsTree::goRight()
+{
+    if(m_current != nullptr){
+        m_current = m_current->rightChild();
+    }
 }
 
 std::string AnimalsTree::recSerialize(const std::shared_ptr<AnimalsTreeNode> &node)

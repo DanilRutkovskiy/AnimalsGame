@@ -92,6 +92,38 @@ void DBManager::initAnimalsDB()
         return;
     }
 
+    s_query = "create table if not exists public.questions_tree(id serial primary key, data text);";
+
+    if(!query.exec(s_query)){
+        qDebug() << QString::fromLocal8Bit(query.lastError().text().toStdString().c_str());
+        assert(0);
+        return;
+    }
+
+    s_query = "SELECT * FROM public.questions_tree;";
+
+    if(!query.exec(s_query)){
+        qDebug() << QString::fromLocal8Bit(query.lastError().text().toStdString().c_str());
+        assert(0);
+        return;
+    }
+
+    int c = 0;
+    while(query.next()){
+        c++;
+        break;
+    }
+
+    if(c == 0){
+        s_query = "INSERT INTO public.questions_tree (data) VALUES ('');";
+    }
+
+    if(!query.exec(s_query)){
+        qDebug() << QString::fromLocal8Bit(query.lastError().text().toStdString().c_str());
+        assert(0);
+        return;
+    }
+
     if (!query.isActive()) {
         qDebug() << "Не удалось инициализировать базу данных.";
         assert(0);
@@ -128,4 +160,61 @@ void DBManager::addNewUser(const std::string &nickname, const std::string &passw
         assert(0);
         return;
     }
+}
+
+void DBManager::saveTreeData(const std::string &tree_data)
+{
+    auto db = QSqlDatabase::database("Animals");
+
+    if(!db.isOpen()){
+        qDebug() << "No database connection";
+        assert(0);
+        return;
+    }
+
+    QSqlQuery query(db);
+
+    query.prepare("UPDATE public.questions_tree SET data = ? WHERE id = 1");
+
+    query.bindValue(0, QString::fromStdString(tree_data));
+
+    if(!query.exec()){
+        qDebug() << QString::fromLocal8Bit(query.lastError().text().toStdString().c_str());
+        assert(0);
+        return;
+    }
+
+    if (!query.isActive()) {
+        qDebug() << "Can initialize database";
+        assert(0);
+        return;
+    }
+}
+
+std::string DBManager::getTreeData()
+{
+    auto db = QSqlDatabase::database("Animals");
+
+    if(!db.isOpen()){
+        qDebug() << "No database connection";
+        assert(0);
+        return "";
+    }
+
+    QSqlQuery query(db);
+
+    QString s_query = "SELECT data FROM public.questions_tree WHERE id = 1;";
+
+    if(!query.exec(s_query)){
+        qDebug() << QString::fromLocal8Bit(query.lastError().text().toStdString().c_str());
+        assert(0);
+        return "";
+    }
+
+    QString ret = "";
+    while(query.next()){
+        ret = query.value(0).toString();
+    }
+
+    return ret.toStdString();
 }

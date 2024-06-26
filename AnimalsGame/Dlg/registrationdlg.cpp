@@ -7,7 +7,7 @@
 #include "../dbmanager.h"
 
 RegistrationDlg::RegistrationDlg(users_t& users, QWidget *parent)
-    : m_users(users), m_mode{DlgMode::LogIn}, QDialog(parent)
+    : m_users(users), m_mode{RegistrationDlgNs::DlgMode::LogIn}, QDialog(parent)
     , ui(new Ui::RegistrationDlg)
 {
     ui->setupUi(this);
@@ -20,10 +20,10 @@ RegistrationDlg::~RegistrationDlg()
     delete ui;
 }
 
-void RegistrationDlg::changeMode(DlgMode mode)
+void RegistrationDlg::changeMode(RegistrationDlgNs::DlgMode mode)
 {
     m_mode = mode;
-    if(m_mode == DlgMode::Registration){
+    if(m_mode == RegistrationDlgNs::DlgMode::Registration){
         ui->nicknameComboBox->hide();
         ui->headerLabel->setText("Регистрация нового пользователя");
         ui->registrationBtn->hide();
@@ -31,7 +31,7 @@ void RegistrationDlg::changeMode(DlgMode mode)
         ui->repeatPasswordEdit->show();
         ui->nicknameEdit->show();
     }
-    else if(m_mode == DlgMode::LogIn){
+    else if(m_mode == RegistrationDlgNs::DlgMode::LogIn){
         ui->nicknameComboBox->clear();
         ui->repeatPasswordLabel->hide();
         ui->repeatPasswordEdit->hide();
@@ -50,10 +50,10 @@ void RegistrationDlg::init()
     initConnects();
 
     if(m_users.empty()){
-        changeMode(DlgMode::Registration);
+        changeMode(RegistrationDlgNs::DlgMode::Registration);
 
     }else{
-        changeMode(DlgMode::LogIn);
+        changeMode(RegistrationDlgNs::DlgMode::LogIn);
     }
 }
 
@@ -66,7 +66,7 @@ void RegistrationDlg::initConnects()
 
 void RegistrationDlg::onAcceptBtnClicked()
 {
-    if(m_mode == DlgMode::Registration){
+    if(m_mode == RegistrationDlgNs::DlgMode::Registration){
         std::string nickname = ui->nicknameEdit->text().toStdString();
         std::string password = ui->passwordEdit->text().toStdString();
         std::string repeat_password = ui->repeatPasswordEdit->text().toStdString();
@@ -98,7 +98,7 @@ void RegistrationDlg::onAcceptBtnClicked()
         dbmanager->addNewUser(nickname, password);
         accept();
     }
-    else if(m_mode == DlgMode::LogIn){
+    else if(m_mode == RegistrationDlgNs::DlgMode::LogIn){
         std::string nickname = ui->nicknameComboBox->currentText().toStdString();
         std::string password = ui->passwordEdit->text().toStdString();
 
@@ -140,5 +140,5 @@ void RegistrationDlg::onExitBtnClicked()
 
 void RegistrationDlg::onRegistrationBtnClicked()
 {
-    changeMode(DlgMode::Registration);
+    changeMode(RegistrationDlgNs::DlgMode::Registration);
 }

@@ -1,4 +1,5 @@
 #include "thegame.h"
+#include "dbmanager.h"
 
 TheGame::TheGame(): m_dataTree {std::make_unique<AnimalsTree>()}
 {
@@ -7,23 +8,34 @@ TheGame::TheGame(): m_dataTree {std::make_unique<AnimalsTree>()}
 
 void TheGame::init()
 {
-    auto head = std::make_shared<AnimalsTreeNode>(NodeType::Question, "Это млекопитающее?");
-    auto leftCh = std::make_shared<AnimalsTreeNode>(NodeType::Question, "Оно лает?");
-    auto rigthCh = std::make_shared<AnimalsTreeNode>(NodeType::Question, "Оно покрыто чешуей?");
-    head->setLeftChild(leftCh);
-    head->setRightChild(rigthCh);
-    leftCh->addLeftChild(NodeType::Answer, "Собака");
-    auto giraffeQ = leftCh->addRightChild(NodeType::Question, "Оно с длинной шеей?");
-    giraffeQ->addLeftChild(NodeType::Answer, "Жираф");
-    auto waterQ = rigthCh->addLeftChild(NodeType::Question, "Оно дышит в воде?");
-    rigthCh->addRightChild(NodeType::Answer, "Птица");
-    waterQ->addLeftChild(NodeType::Answer, "Рыба");
-    waterQ->addRightChild(NodeType::Answer, "Змея");
+    auto dbmanager = DBManager::instance();
 
-    m_dataTree->setHead(head);
+    if(dbmanager == nullptr){
+        assert(0);
+        return;
+    }
 
-    auto check = m_dataTree->serialize();
+    std::string tree_data = dbmanager->getTreeData();
+    m_dataTree->deserialize(tree_data);
+    //TODO что если tree_data не получена - надо сделать стандартную заглушку, в идеале - из файла
+}
 
-    AnimalsTree test;
-    test.deserialize(check);
+std::string TheGame::getQuestion()
+{
+    if(m_dataTree->getCurrentNode() != nullptr){
+        return m_dataTree->getCurrentNode()->data();
+    }
+    else{
+        return "";
+    }
+}
+
+void TheGame::answerYes()
+{
+    m_dataTree->goLeft();
+}
+
+void TheGame::answerNo()
+{
+    m_dataTree->goRight();
 }

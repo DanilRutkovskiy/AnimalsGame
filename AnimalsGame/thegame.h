@@ -10,9 +10,11 @@ class TheGame
 public:
     TheGame();
 
+    std::string getQuestion();
+    void answerYes();
+    void answerNo();
 private:
     void init();
-
 private:
     std::unique_ptr<AnimalsTree> m_dataTree;
 };

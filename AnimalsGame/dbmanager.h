@@ -8,9 +8,11 @@ class DBManager
 public:
     static DBManager* instance();
     void connectToAnimalsDB();
-    std::vector<std::tuple<int, std::string, std::string>> getUsers();
 
+    std::vector<std::tuple<int, std::string, std::string>> getUsers();
     void addNewUser(const std::string& nickname, const std::string& password);
+    void saveTreeData(const std::string& tree_data);
+    std::string getTreeData();
 private:
     DBManager();
     ~DBManager();
