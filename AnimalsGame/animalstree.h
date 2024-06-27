@@ -7,6 +7,7 @@
 enum class NodeType{
     Answer,
     Question,
+    Null
 };
 
 class AnimalsTreeNode{
@@ -20,6 +21,9 @@ public:
     std::shared_ptr<AnimalsTreeNode> rightChild();
     void setLeftChild(std::shared_ptr<AnimalsTreeNode>& left);
     void setRightChild(std::shared_ptr<AnimalsTreeNode>& right);
+
+    void setData(const std::string& new_data);
+    void setType(NodeType new_type);
 
     std::string data();
     NodeType type();
@@ -36,11 +40,13 @@ class AnimalsTree
 public:
     AnimalsTree();
     void setHead(std::shared_ptr<AnimalsTreeNode>& head);
+    void resetHeadAsCurrentNode();
 
     std::string serialize();
     void deserialize(const std::string& data);
 
     std::shared_ptr<AnimalsTreeNode> getCurrentNode();
+    std::shared_ptr<AnimalsTreeNode> getPreviousNode();
     void goLeft();
     void goRight();
 
@@ -51,6 +57,7 @@ private:
 private:
     std::shared_ptr<AnimalsTreeNode> m_head;
     std::shared_ptr<AnimalsTreeNode> m_current;
+    std::shared_ptr<AnimalsTreeNode> m_prev;
 };
 
 #endif // ANIMALSTREE_H

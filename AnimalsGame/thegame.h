@@ -10,9 +10,12 @@ class TheGame
 public:
     TheGame();
 
-    std::string getQuestion();
+    NodeType currentState(std::string& str);
     void answerYes();
     void answerNo();
+    void addNewQuestion(const std::string& question, const std::string& ans);
+    void newGame();
+    void saveProgress();
 private:
     void init();
 private:

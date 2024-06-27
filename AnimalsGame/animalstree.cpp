@@ -34,6 +34,16 @@ void AnimalsTreeNode::setRightChild(std::shared_ptr<AnimalsTreeNode> &right)
     m_rightChild = right;
 }
 
+void AnimalsTreeNode::setData(const std::string &new_data)
+{
+    m_data = new_data;
+}
+
+void AnimalsTreeNode::setType(NodeType new_type)
+{
+    m_type = new_type;
+}
+
 std::shared_ptr<AnimalsTreeNode> AnimalsTreeNode::leftChild()
 {
     return m_leftChild;
@@ -54,7 +64,7 @@ NodeType AnimalsTreeNode::type()
     return m_type;
 }
 
-AnimalsTree::AnimalsTree(): m_head{nullptr}, m_current(nullptr)
+AnimalsTree::AnimalsTree(): m_head{nullptr}, m_current(nullptr), m_prev{nullptr}
 {
 
 }
@@ -62,6 +72,11 @@ AnimalsTree::AnimalsTree(): m_head{nullptr}, m_current(nullptr)
 void AnimalsTree::setHead(std::shared_ptr<AnimalsTreeNode>& head)
 {
     m_head = head;
+}
+
+void AnimalsTree::resetHeadAsCurrentNode()
+{
+    m_current = m_head;
 }
 
 std::string AnimalsTree::serialize()
@@ -81,9 +96,15 @@ std::shared_ptr<AnimalsTreeNode> AnimalsTree::getCurrentNode()
     return m_current;
 }
 
+std::shared_ptr<AnimalsTreeNode> AnimalsTree::getPreviousNode()
+{
+    return m_prev;
+}
+
 void AnimalsTree::goLeft()
 {
     if(m_current != nullptr){
+        m_prev = m_current;
         m_current = m_current->leftChild();
     }
 
@@ -92,6 +113,7 @@ void AnimalsTree::goLeft()
 void AnimalsTree::goRight()
 {
     if(m_current != nullptr){
+        m_prev = m_current;
         m_current = m_current->rightChild();
     }
 }

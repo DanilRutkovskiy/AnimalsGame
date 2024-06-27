@@ -32,7 +32,7 @@ public:
 private:
     void init();
     void initConnects();
-    void onAnswer(const std::string& str);
+    void onAnswer();
 
 private slots:
     void onExitBtnClicked();
