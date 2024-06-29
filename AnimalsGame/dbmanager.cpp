@@ -115,7 +115,7 @@ void DBManager::initAnimalsDB()
     }
 
     if(c == 0){
-        s_query = "INSERT INTO public.questions_tree (data) VALUES ('');";
+        s_query = "INSERT INTO public.questions_tree (id, data) VALUES (1, '');";
     }
 
     if(!query.exec(s_query)){
@@ -217,4 +217,67 @@ std::string DBManager::getTreeData()
     }
 
     return ret.toStdString();
+}
+
+void DBManager::makeBackup()
+{
+    auto db = QSqlDatabase::database("Animals");
+
+    if(!db.isOpen()){
+        qDebug() << "No database connection";
+        assert(0);
+        return ;
+    }
+
+    QSqlQuery query(db);
+
+    QString s_query = "SELECT data FROM public.questions_tree WHERE id = 1;";
+
+    if(!query.exec(s_query)){
+        qDebug() << QString::fromLocal8Bit(query.lastError().text().toStdString().c_str());
+        assert(0);
+        return;
+    }
+
+    QString ret = "";
+    while(query.next()){
+        ret = query.value(0).toString();
+    }
+
+    s_query = "SELECT data FROM public.questions_tree WHERE id = 2;";
+
+    if(!query.exec(s_query)){
+        qDebug() << QString::fromLocal8Bit(query.lastError().text().toStdString().c_str());
+        assert(0);
+        return;
+    }
+
+    bool exists = false;
+    while(query.next()){
+        exists = true;
+    }
+
+    if(exists){
+        query.prepare("UPDATE public.questions_tree SET data = ? WHERE id = 2");
+
+        query.bindValue(0, ret);
+    }
+    else{
+        query.prepare("INSERT INTO public.questions_tree (id, data) VALUES(2, ?);");
+
+        query.bindValue(0, ret);
+    }
+
+    if(!query.exec()){
+        qDebug() << QString::fromLocal8Bit(query.lastError().text().toStdString().c_str());
+        assert(0);
+        return;
+    }
+}
+
+bool DBManager::isConnectedToAnimalsDB()
+{
+    auto db = QSqlDatabase::database("Animals");
+
+    return db.isOpen();
 }

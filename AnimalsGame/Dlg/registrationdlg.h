@@ -31,9 +31,7 @@ public:
 
 private slots:
     void onAcceptBtnClicked();
-
     void onExitBtnClicked();
-
     void onRegistrationBtnClicked();
 
 private:

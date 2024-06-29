@@ -33,12 +33,14 @@ private:
     void init();
     void initConnects();
     void onAnswer();
+    void addNewAnimal();
 
 private slots:
     void onExitBtnClicked();
     void onNewGameBtnClicked();
     void onYesBtnClicked();
     void onNoBtnClicked();
+    void onBackUpBtn();
 
 private:
     Ui::MainWindow *ui;

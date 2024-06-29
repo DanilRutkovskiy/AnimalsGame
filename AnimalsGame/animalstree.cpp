@@ -1,4 +1,5 @@
 #include "animalstree.h"
+#include <cassert>
 
 AnimalsTreeNode::~AnimalsTreeNode()
 {
@@ -64,7 +65,7 @@ NodeType AnimalsTreeNode::type()
     return m_type;
 }
 
-AnimalsTree::AnimalsTree(): m_head{nullptr}, m_current(nullptr), m_prev{nullptr}
+AnimalsTree::AnimalsTree(): m_head{std::make_shared<AnimalsTreeNode>(NodeType::Null, "")}, m_current(nullptr)
 {
 
 }
@@ -93,28 +94,40 @@ void AnimalsTree::deserialize(const std::string &data)
 
 std::shared_ptr<AnimalsTreeNode> AnimalsTree::getCurrentNode()
 {
-    return m_current;
-}
-
-std::shared_ptr<AnimalsTreeNode> AnimalsTree::getPreviousNode()
-{
-    return m_prev;
+    if(m_current != nullptr){
+        return m_current;
+    }
+    else{
+        assert(0);
+        return nullptr;
+    }
 }
 
 void AnimalsTree::goLeft()
 {
     if(m_current != nullptr){
-        m_prev = m_current;
+        if(m_current->leftChild() == nullptr){
+            auto child = std::make_shared<AnimalsTreeNode>(NodeType::Null, "");
+            m_current->setLeftChild(child);
+        }
         m_current = m_current->leftChild();
     }
-
+    else{
+        assert(0);
+    }
 }
 
 void AnimalsTree::goRight()
 {
     if(m_current != nullptr){
-        m_prev = m_current;
+        if(m_current->rightChild() == nullptr){
+            auto child = std::make_shared<AnimalsTreeNode>(NodeType::Null, "");
+            m_current->setRightChild(child);
+        }
         m_current = m_current->rightChild();
+    }
+    else{
+        assert(0);
     }
 }
 
@@ -154,7 +167,7 @@ std::shared_ptr<AnimalsTreeNode> AnimalsTree::recDeserialize(std::istringstream&
         }
     }
     iss >> type;
-    if(val == "null" && type == "null"){
+    if(val == "null" || type == "null"){
         return nullptr;
     }
 

@@ -1,5 +1,6 @@
 #include "thegame.h"
 #include "dbmanager.h"
+#include "fstream"
 
 TheGame::TheGame(): m_dataTree {std::make_unique<AnimalsTree>()}
 {
@@ -29,8 +30,24 @@ void TheGame::init()
     }
 
     std::string tree_data = dbmanager->getTreeData();
-    m_dataTree->deserialize(tree_data);
-    //TODO что если tree_data не получена - надо сделать стандартную заглушку, в идеале - из файла
+    if(tree_data != ""){
+        //Сделать проверку на корректность
+        m_dataTree->deserialize(tree_data);
+
+        return;
+    }
+
+    std::ifstream file{"treeData.txt"};
+    if(file.is_open()){
+        std::getline(file, tree_data);
+        if(tree_data != ""){
+            m_dataTree->deserialize(tree_data);
+        }
+    }
+    else{
+        std::ofstream{"treeData.txt"};
+    }
+
 }
 
 void TheGame::answerYes()
@@ -68,6 +85,16 @@ void TheGame::saveProgress()
     auto dbmanager = DBManager::instance();
     if(dbmanager){
         dbmanager->saveTreeData(m_dataTree->serialize());
+    }
+    else{
+        assert(0);
+    }
+
+    std::ofstream file{"treeData.txt"};
+
+    if(file.is_open()){
+        file << m_dataTree->serialize();
+        file.close();
     }
     else{
         assert(0);

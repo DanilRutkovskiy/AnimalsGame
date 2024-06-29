@@ -46,7 +46,6 @@ public:
     void deserialize(const std::string& data);
 
     std::shared_ptr<AnimalsTreeNode> getCurrentNode();
-    std::shared_ptr<AnimalsTreeNode> getPreviousNode();
     void goLeft();
     void goRight();
 
@@ -57,7 +56,6 @@ private:
 private:
     std::shared_ptr<AnimalsTreeNode> m_head;
     std::shared_ptr<AnimalsTreeNode> m_current;
-    std::shared_ptr<AnimalsTreeNode> m_prev;
 };
 
 #endif // ANIMALSTREE_H

@@ -13,6 +13,8 @@ public:
     void addNewUser(const std::string& nickname, const std::string& password);
     void saveTreeData(const std::string& tree_data);
     std::string getTreeData();
+    void makeBackup();
+    bool isConnectedToAnimalsDB();
 private:
     DBManager();
     ~DBManager();

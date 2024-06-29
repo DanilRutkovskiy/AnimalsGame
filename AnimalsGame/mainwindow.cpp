@@ -2,6 +2,8 @@
 #include "./ui_mainwindow.h"
 #include <QMessageBox>
 #include <QInputDialog>
+#include "dbmanager.h"
+#include <fstream>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -59,6 +61,7 @@ void MainWindow::initConnects()
     QObject::connect(ui->newGameBtn, &QPushButton::clicked, this, [&](){this->onNewGameBtnClicked();});
     QObject::connect(ui->yesBtn, &QPushButton::clicked, this, [&](){this->onYesBtnClicked();});
     QObject::connect(ui->noBtn, &QPushButton::clicked, this, [&](){this->onNoBtnClicked();});
+    QObject::connect(ui->backUpBtn, &QPushButton::clicked, this, [&](){this->onBackUpBtn();});
 }
 
 void MainWindow::onAnswer()
@@ -68,6 +71,7 @@ void MainWindow::onAnswer()
 
     if (type == NodeType::Null){
         ui->mainTextEdit->appendPlainText("Животное не найдено.\nНапишите животное, которое вы загадали, а затем введите вопрос, который поможет его отгадать.");
+        addNewAnimal();
     }
     else if (type == NodeType::Answer){
         str += "?";
@@ -82,50 +86,55 @@ void MainWindow::onAnswer()
             changeMode(MainWindowNs::Mode::MainMenu);
         }
         else{
-            QString new_animal, new_question;
-            QInputDialog dlg;
-            dlg.setInputMode(QInputDialog::TextInput);
-            dlg.setLabelText("Пожалуйста напишите животное, которое вы загадали");
-            if(dlg.exec() == QDialog::Accepted){
-                new_animal = dlg.textValue();
-            }
-            else{
-                changeMode(MainWindowNs::Mode::MainMenu);
-                return;
-            }
-
-            dlg.setLabelText("Пожалуйста, напишите вопрос, который поможет отгадать данное животное");
-            if(dlg.exec() == QDialog::Accepted){
-                new_question = dlg.textValue();
-            }
-            else{
-                changeMode(MainWindowNs::Mode::MainMenu);
-                return;
-            }
-
-            if(new_animal == "" || new_question == ""){
-                QMessageBox msg;
-                msg.setText("Неверно введены данные, попробовать еще раз?");
-                msg.setInformativeText("");
-                msg.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
-                msg.setDefaultButton(QMessageBox::Yes);
-
-                if(msg.exec() == QMessageBox::Yes){
-                    onAnswer();
-                }
-                else{
-                    changeMode(MainWindowNs::Mode::MainMenu);
-                    return;
-                }
-            }
-            else{
-                m_game->addNewQuestion(new_question.toStdString(), new_animal.toStdString());
-                changeMode(MainWindowNs::Mode::MainMenu);
-            }
+            addNewAnimal();
         }
     }
     else if (type == NodeType::Question){
         ui->mainTextEdit->appendPlainText(str.c_str());
+    }
+}
+
+void MainWindow::addNewAnimal()
+{
+    QString new_animal, new_question;
+    QInputDialog dlg;
+    dlg.setInputMode(QInputDialog::TextInput);
+    dlg.setLabelText("Пожалуйста напишите животное, которое вы загадали");
+    if(dlg.exec() == QDialog::Accepted){
+        new_animal = dlg.textValue();
+    }
+    else{
+        changeMode(MainWindowNs::Mode::MainMenu);
+        return;
+    }
+
+    dlg.setLabelText("Пожалуйста, напишите вопрос, который поможет отгадать данное животное");
+    if(dlg.exec() == QDialog::Accepted){
+        new_question = dlg.textValue();
+    }
+    else{
+        changeMode(MainWindowNs::Mode::MainMenu);
+        return;
+    }
+
+    if(new_animal == "" || new_question == ""){
+        QMessageBox msg;
+        msg.setText("Неверно введены данные, попробовать еще раз?");
+        msg.setInformativeText("");
+        msg.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+        msg.setDefaultButton(QMessageBox::Yes);
+
+        if(msg.exec() == QMessageBox::Yes){
+            onAnswer();
+        }
+        else{
+            changeMode(MainWindowNs::Mode::MainMenu);
+            return;
+        }
+    }
+    else{
+        m_game->addNewQuestion(new_question.toStdString(), new_animal.toStdString());
+        changeMode(MainWindowNs::Mode::MainMenu);
     }
 }
 
@@ -157,4 +166,35 @@ void MainWindow::onNoBtnClicked()
 {
     m_game->answerNo();
     onAnswer();
+}
+
+void MainWindow::onBackUpBtn()
+{
+    auto db_manager = DBManager::instance();
+
+    if(db_manager){
+        db_manager->makeBackup();
+    }
+    else{
+        assert(0);
+    }
+
+    std::ifstream file{"treeData.txt"};
+    std::string data;
+    if(file.is_open()){
+        std::getline(file, data);
+        file.close();
+    }
+    else{
+        assert(0);
+    }
+
+    std::ofstream fileBackup{"treeDataBackup.txt"};
+    if(fileBackup.is_open()){
+        fileBackup << data;
+        fileBackup.close();
+    }
+    else{
+        assert(0);
+    }
 }

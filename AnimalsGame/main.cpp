@@ -15,12 +15,14 @@ int main(int argc, char *argv[])
     db_manager->connectToAnimalsDB();
     auto users = db_manager->getUsers();
 
-    RegistrationDlg dlg{users};
-    if(QDialog::Accepted  == dlg.exec()){
-        MainWindow w;
-        w.show();
-        return a.exec();
+    if(db_manager->isConnectedToAnimalsDB()){
+        RegistrationDlg dlg{users};
+        if(QDialog::Accepted  == dlg.exec()){
+            //TODO добавить код для обработки выбранного пользователя
+        }
     }
 
-    return 0;
+    MainWindow w;
+    w.show();
+    return a.exec();
 }

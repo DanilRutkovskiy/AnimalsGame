@@ -76,6 +76,18 @@
      </layout>
     </item>
     <item>
+     <widget class="QPushButton" name="backUpBtn">
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Сделать бэкап БД</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QPushButton" name="exitBtn">
       <property name="font">
        <font>
